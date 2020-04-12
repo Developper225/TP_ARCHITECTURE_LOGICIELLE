@@ -1,20 +1,16 @@
 package com.esiea.tp4A.domain;
 
 public interface MarsRover {
-
-    default MarsRover initialize(Position position) {
+    default MarsRover initPos(Position position) {
         return this;
     }
-
-    default MarsRover updateMap(PlanetMap map) {
+    default MarsRover reviseMap(PlanetMap map) {
         return this;
     }
-
-    default MarsRover configureLaserRange(int range) {
+    default MarsRover setLaserConf(int range) {
         return this;
     }
-
-    default Position move(String command) throws Exception {
+    default Position move(String command){
         return Position.of(0, 0, Direction.NORTH);
     }
 }
