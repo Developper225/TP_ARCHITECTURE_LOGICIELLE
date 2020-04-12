@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class MovingRoverTest {
     @Test
     void MovingForwardRover() throws Exception {
-        MarsRover marsRover = new MovingRover(0, 0, Direction.NORTH);
+        MarsRover marsRover = new MovingRover(0, 0, Direction.NORTH).initialize(Position.of(0,0,Direction.NORTH));
         Position newPosition = marsRover.move("f");
         Assertions.assertThat(newPosition).isEqualTo(Position.of(0, 1, Direction.NORTH));
     }

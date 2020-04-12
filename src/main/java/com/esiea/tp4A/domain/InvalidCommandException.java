@@ -1,7 +1,7 @@
 package com.esiea.tp4A.domain;
 
-public class InvalidCommandException extends RuntimeException {
-    public InvalidCommandException(String message) {
+class InvalidCommandException extends RuntimeException {
+    InvalidCommandException(String message) {
         super(message);
     }
 }

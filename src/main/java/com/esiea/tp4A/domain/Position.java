@@ -16,7 +16,7 @@ public interface Position {
         private final int y;
         private final Direction direction;
 
-        public FixedPosition(int x, int y, Direction direction) {
+        FixedPosition(int x, int y, Direction direction) {
             this.x = x;
             this.y = y;
             this.direction = direction;

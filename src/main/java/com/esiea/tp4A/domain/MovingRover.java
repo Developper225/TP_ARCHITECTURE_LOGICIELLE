@@ -3,9 +3,10 @@ package com.esiea.tp4A.domain;
 public class MovingRover implements MarsRover {
 
 
-    Position position;
-
-    public MovingRover(int x, int y, Direction direction) {
+    private Position position;
+    private  int laserRange;
+    private PlanetMap planetMap;
+    MovingRover(int x, int y, Direction direction) {
         position = Position.of(x,y,direction);
     }
 
@@ -19,80 +20,103 @@ public class MovingRover implements MarsRover {
         switch(position.getDirection()) {
 
             case NORTH:
-                if ((command.toLowerCase()).equals("f")) {
-                    yPosition = yPosition + 1;
+                switch ((command.toLowerCase())) {
+                    case "f":
+                        yPosition = yPosition + 1;
 
-                } else if ((command.toLowerCase()).equals("b")) {
-                    yPosition = yPosition - 1;
+                        break;
+                    case "b":
+                        yPosition = yPosition - 1;
 
-                } else if ((command.toLowerCase()).equals("l")) {
-                    direction = Direction.WEST;
+                        break;
+                    case "l":
+                        direction = Direction.WEST;
 
-                } else if ((command.toLowerCase()).equals("r")) {
-                    direction = Direction.EAST;
+                        break;
+                    case "r":
+                        direction = Direction.EAST;
 
-                } break;
+                        break;
+                }
+                break;
 
             case EAST:
-                if ((command.toLowerCase()).equals("f")) {
-                    xPosition = xPosition + 1;
+                switch ((command.toLowerCase())) {
+                    case "f":
+                        xPosition = xPosition + 1;
 
 
-                } else if ((command.toLowerCase()).equals("b")) {
-                    xPosition = xPosition - 1;
+                        break;
+                    case "b":
+                        xPosition = xPosition - 1;
 
 
-                } else if ((command.toLowerCase()).equals("l")) {
-                    direction = Direction.NORTH;
+                        break;
+                    case "l":
+                        direction = Direction.NORTH;
 
 
-                } else if ((command.toLowerCase()).equals("r")) {
-                    direction = Direction.SOUTH;
+                        break;
+                    case "r":
+                        direction = Direction.SOUTH;
 
-                } break;
+                        break;
+                }
+                break;
 
 
             case SOUTH:
-                if ((command.toLowerCase()).equals("f")) {
-                    yPosition = yPosition - 1;
+                switch ((command.toLowerCase())) {
+                    case "f":
+                        yPosition = yPosition - 1;
 
 
-                } else if ((command.toLowerCase()).equals("b")) {
-                    yPosition = yPosition + 1;
+                        break;
+                    case "b":
+                        yPosition = yPosition + 1;
 
 
-                } else if ((command.toLowerCase()).equals("l")) {
-                    direction = Direction.EAST;
+                        break;
+                    case "l":
+                        direction = Direction.EAST;
 
 
-                } else if ((command.toLowerCase()).equals("r")) {
-                    direction = Direction.WEST;
+                        break;
+                    case "r":
+                        direction = Direction.WEST;
 
-                } break;
+                        break;
+                }
+                break;
 
             case WEST:
-                if ((command.toLowerCase()).equals("f")) {
-                    xPosition = xPosition-1;
+                switch ((command.toLowerCase())) {
+                    case "f":
+                        xPosition = xPosition - 1;
 
-                } else if ((command.toLowerCase()).equals("b")) {
-                    xPosition = xPosition + 1;
-
-
-                } else if ((command.toLowerCase()).equals("l")) {
-                    direction = Direction.SOUTH;
+                        break;
+                    case "b":
+                        xPosition = xPosition + 1;
 
 
-                } else if ((command.toLowerCase()).equals("r")) {
-                    direction = Direction.NORTH;
+                        break;
+                    case "l":
+                        direction = Direction.SOUTH;
 
-                } break;
+
+                        break;
+                    case "r":
+                        direction = Direction.NORTH;
+
+                        break;
+                }
+                break;
             default:
                 throw new InvalidCommandException("Commande" + command + "inconnue");
 
         }
         position = Position.of(xPosition,yPosition,direction);
-        Position.FixedPosition fixedPosition = new Position.FixedPosition(position.getX(),position.getY(),position.getDirection());
 
-        return fixedPosition;
+        return new Position.FixedPosition(position.getX(),position.getY(),position.getDirection());
     }
 }
