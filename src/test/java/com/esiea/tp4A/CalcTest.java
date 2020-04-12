@@ -17,4 +17,7 @@ class CalcTest {
     void add_cases(int a, int b, int expectedResult) {
         assertThat(calc.add(a, b)).isEqualTo(expectedResult);
     }
+    void mult_cases(int a, int b, int expectedResult) {
+        assertThat(calc.mult(a, b)).isEqualTo(expectedResult);
+    }
 }
